@@ -1,29 +1,21 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Community Site</title>
+    </head>
+    <body>
+        <h1>Welcome to our Community Site!</h1>
+        <p>This is the home page of our site, where we showcase the work of our community members.</p>
 
-<!--사이트 설정-->
-<title>ippan.com</title>
+        <!-- Form for submitting new posts -->
+        <form action="/submit" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
 
-<!--디자인-->
-<style>
-body {background-color: rgb(0, 0, 0);color: rgb(255, 0, 0);}
-a {color: rgb(255,0,0);}
-#title {border: 10px solid rgb(100, 0, 0);background: rgb(10, 10, 10);}
-#content {}
-</style></head><body>
+            <label for="post">Post:</label><br>
+            <textarea id="post" name="post"></textarea><br>
 
-<!--타이틀-->
-<div id="title">
-<h2 align="center" id="home">ippan.com</h2>
-<a href="#home">home</a>
-<a href="#5q2uhn">site</a>
-<a href="ippan-file.html">file</a>
-</div>
-
-<!--내용-->
-<div id="content">
-<h1>이빤 사이트에 오신것을 환영합니다!</h1>
-<h3>이빤 사이트에 있는 모든 정보를 보여드리겠습니다.</h3>
-</div>
-
-<!--끝-->
-</body></html>
+            <input type="submit" value="Submit Post">
+        </form>
+    </body>
+</html>
