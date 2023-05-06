@@ -1,100 +1,123 @@
-      body {
-        background-color: black;
-      }
-      #console {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 640px;
-        height: 480px;
-        background-color: black;
-        color: white;
-        border: 2px solid white;
-        font-family: Courier New;
-        font-size: 16px;
-        overflow: hidden;
-        z-index: 9999;
-      }
+body {
+  background-color: black;
+}
 
-      #console-header {
-        height: 30px;
-        background-color: gray;
-        display: flex;
-        justify-content: space-between;
-        cursor: move;
-      }
+#console {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px;
+  height: 480px;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  font-family: Courier New;
+  font-size: 16px;
+  overflow: hidden;
+  z-index: 9999;
+}
 
-      .console-title {
-        padding: 5px;
-        font-weight: bold;
-      }
+#console-header {
+  height: 30px;
+  background-color: gray;
+  display: flex;
+  justify-content: space-between;
+  cursor: move;
+}
 
-      .console-buttons {
-        display: flex;
-      }
+.console-title {
+  padding: 5px;
+  font-weight: bold;
+}
 
-      .console-button {
-        width: 10px;
-        height: 10px;
-        margin: 10px;
-        border-radius: 50%;
-        border: 2px solid white;
-        cursor: pointer;
-      }
+.console-buttons {
+  display: flex;
+}
 
-      .console-minimize {
-        background-color: yellow;
-      }
+.console-button {
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+}
 
-      .console-maximize {
-        background-color: green;
-      }
+.console-minimize {
+  background-color: yellow;
+}
 
-      .console-close {
-        background-color: red;
-      }
+.console-maximize {
+  background-color: green;
+}
 
-      .console-body {
-        height: calc(100% - 50px); /* Decrease the height by 20px */
-        padding: 10px; /* Add 10px of bottom padding */
-        display: flex;
-        flex-direction: column;
-      }
+.console-close {
+  background-color: red;
+}
 
-      .console-text {
-        flex-grow: 1;
-        overflow: auto;
-        padding-right: 10px;
-      }
+.console-body {
+  height: calc(100% - 50px); /* Decrease the height by 20px */
+  padding: 10px; /* Add 10px of bottom padding */
+  display: flex;
+  flex-direction: column;
+}
 
-      .console-input {
-        display: flex;
-        align-items: center;
-        padding-top: 10px;
-      }
+.console-text {
+  flex-grow: 1;
+  overflow: auto;
+  padding-right: 10px;
+}
 
-      .console-prompt {
-        margin-right: 5px;
-      }
+.console-input {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
 
-      .console-input-field {
-        background-color: transparent;
-        border: none;
-        color: white;
-        font-family: inherit;
-        font-size: inherit;
-        width: 100%;
-        outline: none;
-      }
+.console-prompt {
+  margin-right: 5px;
+}
 
-      @media only screen and (max-width: 700px) {
-        #console {
-          width: 100%;
-          height: 50%;
-          border: none;
-          top: 0;
-          left: 0;
-          transform: none;
-        }
-      }
+.console-input-field {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  outline: none;
+}
+
+@media only screen and (max-width: 700px) {
+  #console {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+    border: none;
+    z-index: 999;
+  }
+
+  .console-body {
+    height: calc(100% - 50px);
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .console-input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .console-input-field {
+    width: calc(100% - 40px);
+    padding: 5px;
+    margin-right: 5px;
+  }
+}
