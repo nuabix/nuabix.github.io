@@ -1,211 +1,331 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Order of the Celestial Light</title>
-  <style>
+<html>
+  <head>
+    <title>DOS Window</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      #console {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 640px;
+        height: 480px;
+        background-color: black;
+        color: white;
+        border: 2px solid white;
+        font-family: Courier New;
+        font-size: 16px;
+        overflow: hidden;
+        z-index: 9999;
+      }
 
-:root {
-  --primary-color: #0D0D0D;
-  --secondary-color: #252525;
-  --tertiary-color: #fff;
-  --font-family: Arial, sans-serif;
-  --font-size: 16px;
-  --line-height: 1.5;
-}
+      #console-header {
+        height: 30px;
+        background-color: gray;
+        display: flex;
+        justify-content: space-between;
+        cursor: move;
+      }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      .console-title {
+        padding: 5px;
+        font-weight: bold;
+      }
 
+      .console-buttons {
+        display: flex;
+      }
 
-html {
-  scroll-behavior: smooth;
-  height: 100%;
-  background: #1A1A1A;
-}
+      .console-button {
+        width: 10px;
+        height: 10px;
+        margin: 10px;
+        border-radius: 50%;
+        border: 2px solid white;
+        cursor: pointer;
+      }
 
-body {
-  font-family: var(--font-family);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
-  color: var(--tertiary-color);
-  background: linear-gradient(to bottom, #0D0D0D, #1A1A1A);
-  height: 100%; 
-}
+      .console-minimize {
+        background-color: yellow;
+      }
 
+      .console-maximize {
+        background-color: green;
+      }
 
-.container h2 {
-  margin-top: 0;
-}
-a {
-  color: var(--tertiary-color);
-  text-decoration: none;
-}
+      .console-close {
+        background-color: red;
+      }
 
-a:hover {
-  text-decoration: underline;
-}
+      .console-body {
+        height: calc(100% - 50px); /* Decrease the height by 20px */
+        padding: 10px; /* Add 10px of bottom padding */
+        display: flex;
+        flex-direction: column;
+      }
 
-ul, ol {
-  list-style: none;
-}
+      .console-text {
+        flex-grow: 1;
+        overflow: auto;
+        padding-right: 10px;
+      }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-}
+      .console-input {
+        display: flex;
+        align-items: center;
+        padding-top: 10px;
+      }
 
-p {
-  margin-bottom: 2rem;
-}
+      .console-prompt {
+        margin-right: 5px;
+      }
 
-/* Header */
+      .console-input-field {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-family: inherit;
+        font-size: inherit;
+        width: 100%;
+        outline: none;
+      }
 
-header {
-  background-color: transparent;
-  color: var(--tertiary-color);
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+      @media only screen and (max-width: 700px) {
+        #console {
+          width: 100%;
+          height: 50%;
+          border: none;
+          top: 0;
+          left: 0;
+          transform: none;
+        }
+      }
 
-nav ul {
-  display: flex;
-}
+    </style>
+    <script>
+    window.onload = function() {
+      var consoleHeader = document.getElementById("console-header");
+      var console = document.getElementById("console");
+      var offsetX = 0;
+      var offsetY = 0;
+      var isDragging = false;
 
-nav li {
-  display: inline-block;
-  margin-right: 1rem;
-  transition: transform 0.2s ease-in-out;
-}
+      consoleHeader.addEventListener("mousedown", function(e) {
+        offsetX = e.clientX - console.offsetLeft;
+        offsetY = e.clientY - console.offsetTop;
+        isDragging = true;
+      });
 
-nav li:hover {
-  transform: translateY(-5px);
-}
+      document.addEventListener("mousemove", function(e) {
+        if (isDragging) {
+          console.style.left = (e.clientX - offsetX) + "px";
+          console.style.top = (e.clientY - offsetY) + "px";
+        }
+      });
 
-nav li:active {
-  transform: translateY(2px);
-}
+      document.addEventListener("mouseup", function(e) {
+        isDragging = false;
+      });
+    }
+    </script>
+  </head>
+  <body>
+    <div id="console">
+      <div id="console-header">
+        <div class="console-title">LO-DOS Prompt</div>
+        <div class="console-buttons">
+          <div class="console-button console-minimize"></div>
+          <div class="console-button console-maximize"></div>
+          <div class="console-button console-close"></div>
+        </div>
+      </div>
+      <div class="console-body">
+        <div class="console-text"></div>
+        <div class="console-input">
+          <span class="console-prompt">C:\></span>
+          <input type="text" class="console-input-field" />
+        </div>
+      </div>
+    </div>
+    <script>
 
-nav a {
-  display: block;
-  padding: 0.5rem;
-  transition: background-color 0.2s ease-in-out;
-}
+const consoleText = document.querySelector('.console-text');
+const consoleInputField = document.querySelector('.console-input-field');
 
-nav a:hover {
-  background-color: var(--secondary-color);
-  text-decoration: none;
-}
-
-/* Main content */
-
-main {
-  margin: 2rem auto;
-  max-width: 800px;
-  padding: 0 2rem;
-}
-
-#hero {
-  background-position: center;
-  text-align: center;
-  padding: 4rem 0;
-}
-
-#hero h1 {
-  font-size: 5rem;
-  margin-top: 2rem;
-}
-
-#hero p {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
-
-#about, #join, #programs, #contact, #disclaimer {
-  background-color: var(--secondary-color);
-  padding: 2rem;
-}
-
-#about h2, #join h2, #programs h2, #contact h2, #disclaimer h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.ippan {
-  margin-top: 8rem;
-  background-color: #0D0D0D;
-  color:#0D0D0D;
-}
-/* Responsive styles */
-
-@media only screen and (max-width: 768px) {
-  #hero h1 {
-    font-size: 2.3rem;
-    margin-top: -6rem;
+consoleInputField.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    const command = consoleInputField.value;
+    consoleInputField.value = '';
+    const output = executeCommand(command);
+    consoleText.innerHTML += `<div>${command}</div><div>${output}</div><br>`;
+    consoleText.scrollTop = consoleText.scrollHeight;
   }
-  #hero p {
-    display: none;
-  }
+});
 
-  #about h2, #join h2, #programs h2, #contact h2, #disclaimer h2 {
-    font-size: 1.5rem;
-  }
+function executeCommand(command) {
+  const commandArray = command.split(' ');
+  const commandName = commandArray[0].toLowerCase();
+  const commandArgs = commandArray.slice(1);
 
-  nav li {
-    display: none;
-  }
-
-  .ippan {
-    margin-top: 0.5rem;
+  switch (commandName) {
+    case 'help':
+      return helpCommand(commandArgs);
+    case 'cls':
+      return clsCommand();
+    case 'echo':
+      return echoCommand(commandArgs);
+    case 'date':
+      return dateCommand();
+    case 'time':
+      return timeCommand();
+    case 'dir':
+      return dirCommand();
+    case 'title':
+      return titleCommand(commandArgs);
+    case 'search':
+      return searchCommand(commandArgs);
+    case 'ping':
+      return pingCommand(commandArgs);
+    case 'ipconfig':
+      return ipconfigCommand();
+    default:
+      return `Command not found: ${commandName}`;
   }
 }
 
+function helpCommand(commandArgs) {
+  const commands = [
+    {
+      name: 'help',
+      description: 'Displays the available commands',
+      syntax: 'help [command]',
+    },
+    {
+      name: 'cls',
+      description: 'Clears the console screen',
+      syntax: 'cls',
+    },
+    {
+      name: 'echo',
+      description: 'Displays a message',
+      syntax: 'echo [message]',
+    },
+    {
+      name: 'date',
+      description: 'Displays the current date',
+      syntax: 'date',
+    },
+    {
+      name: 'time',
+      description: 'Displays the current time',
+      syntax: 'time',
+    },
+    {
+      name: 'dir',
+      description: 'Displays the current directory',
+      syntax: 'dir',
+    },
+    {
+      name: 'title',
+      description: 'Change the title',
+      syntax: 'title',
+    },
+    {
+      name: 'search',
+      description: 'Search for what you entered',
+      syntax: 'search',
+    },
+    {
+      name: 'ping',
+      description: 'Pings a specified host to check connectivity',
+      syntax: 'ping [host]',
+    },
+    {
+      name: 'ipconfig',
+      description: 'Displays the network configuration information',
+      syntax: 'ipconfig',
+    },
+  ];
 
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#join">Join Us</a></li>
-        <li><a href="#programs">Our Programs</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#disclaimer">Disclaimer</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section id="hero">
-      <h1>The Order of the Celestial Light</h1>
-      <p>A spiritual community dedicated to helping our members achieve enlightenment and ascension to a higher plane of existence.</p>
-    </section>
-    <h2 class="ippan"></h2>
-    <section id="about">
-      <h2>About Us</h2>
-      <p>Our mission is to help people tap into their inner power and connect with the divine realm. Through a range of spiritual practices, including meditation, prayer, and energy work, we help our members awaken to their true potential and unlock hidden knowledge and secrets of the universe.</p>
-    </section>
-    <section id="join">
-      <h2>Join Us</h2>
-      <p>If you're interested in becoming a member of The Order of the Celestial Light, we welcome you to attend one of our free seminars or workshops. These events provide an introduction to our teachings and practices, and give you an opportunity to connect with other like-minded individuals.</p>
-    </section>
-    <section id="programs">
-      <h2>Our Programs</h2>
-      <p>We offer a range of programs and initiatives to support our members' spiritual growth, including personalized spiritual guidance, group meditation sessions, and community service projects. Our Divine Master also offers one-on-one sessions for those who are looking for more in-depth guidance and support.</p>
-    </section>
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>If you have any questions about our programs or would like to learn more about The Order of the Celestial Light, please contact us at [insert contact information].</p>
-    </section>
-    <section id="disclaimer">
-      <h2>Disclaimer</h2>
-      <p>Please note that The Order of the Celestial Light is a spiritual community and is not affiliated with any religious or political organization. Our teachings and practices are based on our own experiences and interpretations of spiritual principles and should not be construed as medical or legal advice.</p>
-    </section>
-  </main>
-</body>
+  if (commandArgs.length === 0) {
+    const output = commands.map((command) => `<div>${command.name} - ${command.description}</div>`).join('');
+    return output;
+  } else {
+    const commandName = commandArgs[0].toLowerCase();
+    const matchingCommands = commands.filter((command) => command.name.startsWith(commandName));
+    if (matchingCommands.length === 1) {
+      const command = matchingCommands[0];
+      return `<div>${command.name} - ${command.description}</div><div>Syntax: ${command.syntax}</div>`;
+    } else if (matchingCommands.length > 1) {
+      const output = matchingCommands.map((command) => `<div>${command.name}</div>`).join('');
+      return `<div>Multiple matching commands found:</div>${output}`;
+    } else {
+      return `Command not found: ${commandName}`;
+    }
+  }
+}
+
+function clsCommand() {
+  consoleText.innerHTML = '';
+  return '';
+}
+
+function echoCommand(args) {
+  return args.join(' ');
+}
+
+function dateCommand() {
+  const currentDate = new Date();
+  return currentDate.toLocaleDateString();
+}
+
+function timeCommand() {
+  const currentDate = new Date();
+  return currentDate.toLocaleTimeString();
+}
+
+function dirCommand() {
+  const currentUrl = new URL(window.location.href);
+  const currentPath = currentUrl.pathname.split('/');
+  currentPath.pop();
+  const parentPath = currentPath.join('/');
+  return `<div>${currentUrl.hostname}${parentPath}</div><div>Directory of ${currentUrl.hostname}${currentUrl.pathname}</div><div></div>`;
+}
+
+function titleCommand(commandArgs) {
+  const newTitle = commandArgs.join(' ');
+  document.title = newTitle;
+  return `Title set to ${newTitle}`;
+}
+
+function searchCommand(commandArgs) {
+  const searchQuery = encodeURIComponent(commandArgs.join(' '));
+  const searchUrl = `https://www.google.com/search?q=${searchQuery}`;
+  const linkHtml = `<a href="${searchUrl}" target="_blank">Click</a>`;
+  return `Search results for "${commandArgs.join(' ')}": ${linkHtml}`;
+}
+
+function pingCommand(commandArgs) {
+  if (commandArgs.length === 0) {
+    return 'Usage: ping [host]';
+  } else {
+    const host = commandArgs[0];
+    const responseTime = Math.floor(Math.random() * 100) + 1; // Simulate a random response time between 1 and 100 ms
+    return `Pinging ${host} with 32 bytes of data:\nReply from ${host}: time=${responseTime}ms`;
+  }
+}
+
+function ipconfigCommand() {
+  const ipAddress = '192.168.0.100';
+  const subnetMask = '255.255.255.0';
+  const defaultGateway = '192.168.0.1';
+  return `<div>IP Address: ${ipAddress}</div><div>Subnet Mask: ${subnetMask}</div><div>Default Gateway: ${defaultGateway}</div>`;
+}
+
+
+    </script>
+  </body>
 </html>
