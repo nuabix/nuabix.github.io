@@ -1,6 +1,12 @@
 const consoleText = document.querySelector('.console-text');
 const consoleInputField = document.querySelector('.console-input-field');
 
+window.addEventListener('load', () => {
+  const welcomeMessage = 'Microsoft Windows [Version 10.0.22621.1555]<br>(c) Microsoft Corporation. All rights reserved.<br><br>';
+  const welcomeOutput = executeCommand(`echo ${welcomeMessage}`);
+  consoleText.innerHTML += `<div>${welcomeOutput}</div>`;
+});
+
 consoleInputField.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     const command = consoleInputField.value;
