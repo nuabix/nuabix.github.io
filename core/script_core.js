@@ -2,7 +2,7 @@ const consoleText = document.querySelector('.console-text');
 const consoleInputField = document.querySelector('.console-input-field');
 
 window.addEventListener('load', () => {
-  const welcomeMessage = 'Nuabix [Version 0.01]<br>Nuabix Corporation. All rights reserved.<br><br>';
+  const welcomeMessage = 'Nuabix [Version 0.01]<br>Type \'help\' to verify the command.<br><br>';
   const welcomeOutput = executeCommand(`echo ${welcomeMessage}`);
   consoleText.innerHTML += `<div>${welcomeOutput}</div>`;
 });
@@ -83,7 +83,6 @@ function titleCommand(commandArgs) {
   consoleTitle.textContent = `Nuabix - ${newTitle}`;
   return `Title set to ${newTitle}`;
 }
-
 
 /* Help Command */
 function helpCommand(commandArgs) {
