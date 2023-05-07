@@ -56,23 +56,27 @@ function titleCommand(commandArgs) {
   return `Title set to ${newTitle}`;
 }
 
-function clearCommand() {
-  const iframes = document.querySelectorAll('iframe');
-  iframes.forEach(iframe => iframe.remove());
-  return 'All iframes removed';
-}
-
-function startCommand(commandArgs) {
-  const subPage = commandArgs[0];
+function startCommand(args) {
+  const siteUrl = args[0];
+  if (!siteUrl) {
+    return 'Site URL is required';
+  }
   const iframe = document.createElement('iframe');
-  iframe.src = `sub/${subPage}.html`;
-  iframe.width = '400';
-  iframe.height = '410';
-  iframe.classList.add('iframe-gap'); // apply a CSS class to the iframe element
-  document.body.appendChild(iframe);
-  return `Loaded subpage: ${subPage}`;
-}
+  iframe.src = `site/${siteUrl}.html`;
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.display = 'block';
+    iframe.style.border = 'none';
+  iframe.onload = function() {
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    const body = iframeDoc.body;
+    const bodyHeight = body.scrollHeight;
+    iframe.style.height = `${bodyHeight}px`;
+  };
 
+  consoleText.appendChild(iframe); // add the iframe element
+  return '';
+}
 
 
 
@@ -97,8 +101,6 @@ function executeCommand(command) {
       return dirCommand();
     case 'title':
       return titleCommand(commandArgs);
-    case 'clear':
-      return clearCommand();
     case 'start':
       return startCommand(commandArgs);
 
@@ -144,16 +146,6 @@ function helpCommand(commandArgs) {
       name: 'title',
       description: 'Change the title',
       syntax: 'title',
-    },
-    {
-      name: 'start',
-      description: 'Loads a subpage in an iframe',
-      syntax: 'start [subPage]',
-    },
-    {
-      name: 'clear',
-      description: 'Clears all iframes on the page',
-      syntax: 'start clear',
     },
   ];
 
