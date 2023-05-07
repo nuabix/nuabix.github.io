@@ -149,6 +149,11 @@ function helpCommand(commandArgs) {
       description: 'Change the title',
       syntax: 'title',
     },
+    {
+      name: 'start',
+      description: 'shift site with iframe',
+      syntax: 'start [site]',
+    },
   ];
 
   if (commandArgs.length === 0) {
