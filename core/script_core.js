@@ -1,6 +1,12 @@
 const consoleText = document.querySelector('.console-text');
 const consoleInputField = document.querySelector('.console-input-field');
 
+window.addEventListener('load', () => {
+  const welcomeMessage = 'Nuabix [Version 0.01]<br>Nuabix Corporation. All rights reserved.<br><br>';
+  const welcomeOutput = executeCommand(`echo ${welcomeMessage}`);
+  consoleText.innerHTML += `<div>${welcomeOutput}</div>`;
+});
+
 consoleInputField.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     const command = consoleInputField.value;
@@ -16,6 +22,7 @@ consoleInputField.addEventListener('keydown', (event) => {
 });
 
 
+/* Core Command */
 function executeCommand(command) {
   const commandArray = command.split(' ');
   const commandName = commandArray[0].toLowerCase();
@@ -36,12 +43,7 @@ function executeCommand(command) {
       return dirCommand();
     case 'title':
       return titleCommand(commandArgs);
-    case 'search':
-      return searchCommand(commandArgs);
-    case 'ping':
-      return pingCommand(commandArgs);
-    case 'ipconfig':
-      return ipconfigCommand();
+
     default:
       return `Command not found: ${commandName}`;
   }
@@ -77,16 +79,13 @@ function dirCommand() {
 function titleCommand(commandArgs) {
   const newTitle = commandArgs.join(' ');
   document.title = newTitle;
+  const consoleTitle = document.querySelector('.console-title');
+  consoleTitle.textContent = `Nuabix - ${newTitle}`;
   return `Title set to ${newTitle}`;
 }
 
-function searchCommand(commandArgs) {
-  const searchQuery = encodeURIComponent(commandArgs.join(' '));
-  const searchUrl = `https://www.google.com/search?q=${searchQuery}`;
-  const linkHtml = `<a href="${searchUrl}" target="_blank">Click</a>`;
-  return `Search results for "${commandArgs.join(' ')}": ${linkHtml}`;
-}
 
+/* Help Command */
 function helpCommand(commandArgs) {
   const commands = [
     {
@@ -124,12 +123,6 @@ function helpCommand(commandArgs) {
       description: 'Change the title',
       syntax: 'title',
     },
-    {
-      name: 'search',
-      description: 'Search for what you entered',
-      syntax: 'search [text]',
-    },
-
   ];
 
   if (commandArgs.length === 0) {
@@ -149,9 +142,3 @@ function helpCommand(commandArgs) {
     }
   }
 }
-
-window.addEventListener('load', () => {
-  const welcomeMessage = 'Nuabix [Version 0.01]<br>Nuabix Corporation. All rights reserved.<br><br>';
-  const welcomeOutput = executeCommand(`echo ${welcomeMessage}`);
-  consoleText.innerHTML += `<div>${welcomeOutput}</div>`;
-});
