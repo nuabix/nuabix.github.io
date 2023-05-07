@@ -6,6 +6,9 @@ window.onload = function() {
   var offsetY = 0;
   var isDragging = false;
   var isFullscreen = false;
+  var isMinimized = false;
+  var consoleBody = document.querySelector('.console-body');
+
 
   consoleHeader.addEventListener("mousedown", function(e) {
     offsetX = e.clientX - console.offsetLeft;
@@ -46,6 +49,25 @@ window.onload = function() {
       isFullscreen = false;
     }
   });
+
+  var consoleMinimize = document.querySelector('.console-minimize');
+  consoleMinimize.addEventListener('click', function() {
+    if (!isMinimized) {
+      console.style.width = "400px";
+      console.style.height = "250px";
+      isMinimized = true;
+    } else {
+      console.style.width = "";
+      console.style.height = "";
+      consoleBody.style.display = "";
+      isMinimized = false;
+    }
+  });
+
+    var consoleClose = document.querySelector('.console-close');
+    consoleClose.addEventListener('click', function() {
+      console.style.display = "none";
+    });
 
   document.addEventListener('fullscreenchange', function(e) {
     if (!document.fullscreenElement) {
