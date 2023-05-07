@@ -80,7 +80,9 @@ function startCommand(args) {
   return '';
 }
 
-
+function hahaCommand() {
+  return '';
+}
 
 // Core Command
 function executeCommand(command) {
@@ -105,6 +107,8 @@ function executeCommand(command) {
       return titleCommand(commandArgs);
     case 'start':
       return startCommand(commandArgs);
+    case '하하'
+      return hahaCommand(commandArgs);
 
     default:
       return `Command not found: ${commandName}`;
