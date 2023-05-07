@@ -21,34 +21,6 @@ consoleInputField.addEventListener('keydown', (event) => {
   }
 });
 
-
-/* Core Command */
-function executeCommand(command) {
-  const commandArray = command.split(' ');
-  const commandName = commandArray[0].toLowerCase();
-  const commandArgs = commandArray.slice(1);
-
-  switch (commandName) {
-    case 'help':
-      return helpCommand(commandArgs);
-    case 'cls':
-      return clsCommand();
-    case 'echo':
-      return echoCommand(commandArgs);
-    case 'date':
-      return dateCommand();
-    case 'time':
-      return timeCommand();
-    case 'dir':
-      return dirCommand();
-    case 'title':
-      return titleCommand(commandArgs);
-
-    default:
-      return `Command not found: ${commandName}`;
-  }
-}
-
 function clsCommand() {
   consoleText.innerHTML = '';
   return '';
@@ -82,6 +54,58 @@ function titleCommand(commandArgs) {
   const consoleTitle = document.querySelector('.console-title');
   consoleTitle.textContent = `Nuabix - ${newTitle}`;
   return `Title set to ${newTitle}`;
+}
+
+function clearCommand() {
+  const iframes = document.querySelectorAll('iframe');
+  iframes.forEach(iframe => iframe.remove());
+  return 'All iframes removed';
+}
+
+function startCommand(commandArgs) {
+  const subPage = commandArgs[0];
+  const iframe = document.createElement('iframe');
+  iframe.src = `sub/${subPage}.html`;
+  iframe.width = '500';
+  iframe.height = '400';
+  iframe.onload = function() {
+    iframe.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+  };
+  document.body.appendChild(iframe);
+  return `Loaded subpage: ${subPage}`;
+}
+
+
+
+/* Core Command */
+function executeCommand(command) {
+  const commandArray = command.split(' ');
+  const commandName = commandArray[0].toLowerCase();
+  const commandArgs = commandArray.slice(1);
+
+  switch (commandName) {
+    case 'help':
+      return helpCommand(commandArgs);
+    case 'cls':
+      return clsCommand();
+    case 'echo':
+      return echoCommand(commandArgs);
+    case 'date':
+      return dateCommand();
+    case 'time':
+      return timeCommand();
+    case 'dir':
+      return dirCommand();
+    case 'title':
+      return titleCommand(commandArgs);
+    case 'clear':
+      return clearCommand();
+    case 'start':
+      return startCommand(commandArgs);
+
+    default:
+      return `Command not found: ${commandName}`;
+  }
 }
 
 /* Help Command */
@@ -121,6 +145,16 @@ function helpCommand(commandArgs) {
       name: 'title',
       description: 'Change the title',
       syntax: 'title',
+    },
+    {
+      name: 'start',
+      description: 'Loads a subpage in an iframe',
+      syntax: 'start [subPage]',
+    },
+    {
+      name: 'clear',
+      description: 'Clears all iframes on the page',
+      syntax: 'start clear',
     },
   ];
 
