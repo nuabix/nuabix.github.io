@@ -1,21 +1,20 @@
 const consoleText = document.querySelector('.console-text');
 const consoleInputField = document.querySelector('.console-input-field');
 
-window.addEventListener('load', () => {
-  const welcomeMessage = 'Nuabix [Version 0.01]<br>Nuabix Corporation. All rights reserved.<br><br>';
-  const welcomeOutput = executeCommand(`echo ${welcomeMessage}`);
-  consoleText.innerHTML += `<div>${welcomeOutput}</div>`;
-});
-
 consoleInputField.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     const command = consoleInputField.value;
     consoleInputField.value = '';
     const output = executeCommand(command);
+    if (command === 'cls') {
+      consoleText.innerHTML = '';
+      return;
+    }
     consoleText.innerHTML += `<div>${command}</div><div>${output}</div><br>`;
     consoleText.scrollTop = consoleText.scrollHeight;
   }
 });
+
 
 function executeCommand(command) {
   const commandArray = command.split(' ');
@@ -45,78 +44,6 @@ function executeCommand(command) {
       return ipconfigCommand();
     default:
       return `Command not found: ${commandName}`;
-  }
-}
-
-function helpCommand(commandArgs) {
-  const commands = [
-    {
-      name: 'help',
-      description: 'Displays the available commands',
-      syntax: 'help [command]',
-    },
-    {
-      name: 'cls',
-      description: 'Clears the console screen',
-      syntax: 'cls',
-    },
-    {
-      name: 'echo',
-      description: 'Displays a message',
-      syntax: 'echo [message]',
-    },
-    {
-      name: 'date',
-      description: 'Displays the current date',
-      syntax: 'date',
-    },
-    {
-      name: 'time',
-      description: 'Displays the current time',
-      syntax: 'time',
-    },
-    {
-      name: 'dir',
-      description: 'Displays the current directory',
-      syntax: 'dir',
-    },
-    
-{      name: 'title',
-      description: 'Change the title',
-      syntax: 'title',
-    },
-    {
-      name: 'search',
-      description: 'Search for what you entered',
-      syntax: 'search',
-    },
-    {
-      name: 'ping',
-      description: 'Pings a specified host to check connectivity',
-      syntax: 'ping [host]',
-    },
-    {
-      name: 'ipconfig',
-      description: 'Displays the network configuration information',
-      syntax: 'ipconfig',
-    },
-  ];
-
-  if (commandArgs.length === 0) {
-    const output = commands.map((command) => `<div>${command.name} - ${command.description}</div>`).join('');
-    return output;
-  } else {
-    const commandName = commandArgs[0].toLowerCase();
-    const matchingCommands = commands.filter((command) => command.name.startsWith(commandName));
-    if (matchingCommands.length === 1) {
-      const command = matchingCommands[0];
-      return `<div>${command.name} - ${command.description}</div><div>Syntax: ${command.syntax}</div>`;
-    } else if (matchingCommands.length > 1) {
-      const output = matchingCommands.map((command) => `<div>${command.name}</div>`).join('');
-      return `<div>Multiple matching commands found:</div>${output}`;
-    } else {
-      return `Command not found: ${commandName}`;
-    }
   }
 }
 
@@ -160,19 +87,71 @@ function searchCommand(commandArgs) {
   return `Search results for "${commandArgs.join(' ')}": ${linkHtml}`;
 }
 
-function pingCommand(commandArgs) {
+function helpCommand(commandArgs) {
+  const commands = [
+    {
+      name: 'help',
+      description: 'Displays the available commands',
+      syntax: 'help [command]',
+    },
+    {
+      name: 'cls',
+      description: 'Clears the console screen',
+      syntax: 'cls',
+    },
+    {
+      name: 'echo',
+      description: 'Displays a message',
+      syntax: 'echo [message]',
+    },
+    {
+      name: 'date',
+      description: 'Displays the current date',
+      syntax: 'date',
+    },
+    {
+      name: 'time',
+      description: 'Displays the current time',
+      syntax: 'time',
+    },
+    {
+      name: 'dir',
+      description: 'Displays the current directory',
+      syntax: 'dir',
+    },
+    {
+      name: 'title',
+      description: 'Change the title',
+      syntax: 'title',
+    },
+    {
+      name: 'search',
+      description: 'Search for what you entered',
+      syntax: 'search [text]',
+    },
+
+  ];
+
   if (commandArgs.length === 0) {
-    return 'Usage: ping [host]';
+    const output = commands.map((command) => `<div>${command.name} - ${command.description}</div>`).join('');
+    return output;
   } else {
-    const host = commandArgs[0];
-    const responseTime = Math.floor(Math.random() * 100) + 1; // Simulate a random response time between 1 and 100 ms
-    return `Pinging ${host} with 32 bytes of data:\nReply from ${host}: time=${responseTime}ms`;
+    const commandName = commandArgs[0].toLowerCase();
+    const matchingCommands = commands.filter((command) => command.name.startsWith(commandName));
+    if (matchingCommands.length === 1) {
+      const command = matchingCommands[0];
+      return `<div>${command.name} - ${command.description}</div><div>Syntax: ${command.syntax}</div>`;
+    } else if (matchingCommands.length > 1) {
+      const output = matchingCommands.map((command) => `<div>${command.name}</div>`).join('');
+      return `<div>Multiple matching commands found:</div>${output}`;
+    } else {
+      return `Command not found: ${commandName}`;
+    }
   }
 }
 
-function ipconfigCommand() {
-  const ipAddress = '192.168.0.100';
-  const subnetMask = '255.255.255.0';
-  const defaultGateway = '192.168.0.1';
-  return `<div>IP Address: ${ipAddress}</div><div>Subnet Mask: ${subnetMask}</div><div>Default Gateway: ${defaultGateway}</div>`;
-}
+window.addEventListener('load', () => {
+  const welcomeMessage = 'Nuabix [Version 0.01]<br>Nuabix Corporation. All rights reserved.<br><br>';
+  const welcomeOutput = executeCommand(`echo ${welcomeMessage}`);
+  consoleText.innerHTML += `<div>${welcomeOutput}</div>`;
+});
