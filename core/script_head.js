@@ -53,7 +53,7 @@ window.onload = function() {
   var consoleMinimize = document.querySelector('.console-minimize');
   consoleMinimize.addEventListener('click', function() {
     if (!isMinimized) {
-      console.style.width = "400px";
+      console.style.width = "300px";
       console.style.height = "250px";
       isMinimized = true;
     } else {
