@@ -66,14 +66,13 @@ function startCommand(commandArgs) {
   const subPage = commandArgs[0];
   const iframe = document.createElement('iframe');
   iframe.src = `sub/${subPage}.html`;
-  iframe.width = '500';
-  iframe.height = '400';
-  iframe.onload = function() {
-    iframe.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-  };
+  iframe.width = '400';
+  iframe.height = '410';
+  iframe.classList.add('iframe-gap'); // apply a CSS class to the iframe element
   document.body.appendChild(iframe);
   return `Loaded subpage: ${subPage}`;
 }
+
 
 
 
