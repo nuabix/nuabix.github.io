@@ -66,7 +66,9 @@ function startCommand(args) {
   iframe.style.width = '100%';
   iframe.style.height = '100%';
   iframe.style.display = 'block';
-    iframe.style.border = 'none';
+  iframe.style.border = 'none';
+  iframe.style.maxHeight = '400px';
+  iframe.style.maxWidth = '800px';
   iframe.onload = function() {
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
     const body = iframeDoc.body;
@@ -74,13 +76,13 @@ function startCommand(args) {
     iframe.style.height = `${bodyHeight}px`;
   };
 
-  consoleText.appendChild(iframe); // add the iframe element
+  consoleText.appendChild(iframe);
   return '';
 }
 
 
 
-/* Core Command */
+// Core Command
 function executeCommand(command) {
   const commandArray = command.split(' ');
   const commandName = commandArray[0].toLowerCase();
@@ -109,7 +111,7 @@ function executeCommand(command) {
   }
 }
 
-/* Help Command */
+// Help Command
 function helpCommand(commandArgs) {
   const commands = [
     {
