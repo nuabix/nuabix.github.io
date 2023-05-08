@@ -81,7 +81,7 @@ function startCommand(args) {
 }
 
 function hahaCommand() {
-  return '';
+  return 'hoho';
 }
 
 // Core Command
@@ -107,7 +107,7 @@ function executeCommand(command) {
       return titleCommand(commandArgs);
     case 'start':
       return startCommand(commandArgs);
-    case '하하':
+    case 'haha':
       return hahaCommand();
 
     default:
