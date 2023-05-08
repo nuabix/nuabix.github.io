@@ -107,7 +107,7 @@ function executeCommand(command) {
       return titleCommand(commandArgs);
     case 'start':
       return startCommand(commandArgs);
-    case '하하'
+    case '하하':
       return hahaCommand();
 
     default:
