@@ -108,7 +108,7 @@ function executeCommand(command) {
     case 'start':
       return startCommand(commandArgs);
     case '하하'
-      return hahaCommand(commandArgs);
+      return hahaCommand();
 
     default:
       return `Command not found: ${commandName}`;
