@@ -62,7 +62,7 @@ function startCommand(args) {
     return 'Site URL is required';
   }
   const iframe = document.createElement('iframe');
-  iframe.src = `site/${siteUrl}.html`;
+  iframe.src = `site/${siteUrl}`;
   iframe.style.width = '100%';
   iframe.style.height = '100%';
   iframe.style.display = 'block';
