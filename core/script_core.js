@@ -80,10 +80,6 @@ function startCommand(args) {
   return '';
 }
 
-function hahaCommand() {
-  return 'hoho';
-}
-
 // Core Command
 function executeCommand(command) {
   const commandArray = command.split(' ');
@@ -107,8 +103,6 @@ function executeCommand(command) {
       return titleCommand(commandArgs);
     case 'start':
       return startCommand(commandArgs);
-    case 'haha':
-      return hahaCommand();
 
     default:
       return `Command not found: ${commandName}`;
@@ -155,8 +149,8 @@ function helpCommand(commandArgs) {
     },
     {
       name: 'start',
-      description: 'shift site with iframe',
-      syntax: 'start [site]',
+      description: 'Opens a site in an iframe.',
+      syntax: 'start [site URL]',
     },
   ];
 
