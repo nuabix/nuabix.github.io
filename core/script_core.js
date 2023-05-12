@@ -80,6 +80,11 @@ function startCommand(args) {
   return '';
 }
 
+function questionCommand() {
+  const result = Math.floor(Math.random() * 2) === 0 ? 'Yes' : 'No';
+  return `${result}!`;
+}
+
 // Core Command
 function executeCommand(command) {
   const commandArray = command.split(' ');
@@ -103,6 +108,8 @@ function executeCommand(command) {
       return titleCommand(commandArgs);
     case 'start':
       return startCommand(commandArgs);
+    case 'do?':
+      return questionCommand();
 
     default:
       return `Command not found: ${commandName}`;
