@@ -81,9 +81,17 @@ function startCommand(args) {
 }
 
 function questionCommand() {
-  const result = Math.floor(Math.random() * 2) === 0 ? 'Yes' : 'No';
-  return `${result}!`;
+  setTimeout(() => {
+    setTimeout(() => {
+      const result = Math.floor(Math.random() * 2) === 0 ? 'Yes' : 'No';
+      consoleText.innerHTML += `<div>${result}!</div><br>`;
+      consoleText.scrollTop = consoleText.scrollHeight;
+    }, Math.floor(Math.random() * 2000) + 1000);
+  }, 0);
+
+  return 'Loading. . .';
 }
+
 
 // Core Command
 function executeCommand(command) {
