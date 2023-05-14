@@ -1,43 +1,33 @@
 <!DOCTYPE html>
 <html>
+<html>
 <head>
 <style>
-body {
-  background-color: black;
+a {
   color: white;
+  background-color: black;
+  text-decoration: none;
   font-family: "Courier New", monospace;
-}
-
-#loading {
-  display: block;
-  margin-top: 100px;
-  text-align: center;
-}
-
-#loading span {
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
 }
 </style>
 <script>
-function openNewWindow() {
-  window.open("https://file.kiwi/784d8c41#xCRZDu1PmCQWoLHBwcDNwA");
+var links = ["https://file.kiwi/784d8c41#xCRZDu1PmCQWoLHBwcDNwA"];
+var index = 0;
+function printLink() {
+  var link = document.createElement("a");
+  link.innerHTML = links[index];
+  link.href = links[index];
+  link.target = "_blank";
+  document.body.appendChild(link);
+  document.body.appendChild(document.createElement("br"));
+  index++;
+  if (index == links.length) {
+    clearInterval(timer);
+  }
 }
-
-function showLoading() {
-  document.getElementById("loading").innerHTML = "Loading...<span>_</span>";
-}
-
-setTimeout(openNewWindow, 3000);
-setTimeout(showLoading, 0);
+var timer = setInterval(printLink, 100);
 </script>
 </head>
 <body>
-<div id="loading"></div>
 </body>
 </html>
