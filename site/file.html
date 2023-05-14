@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
-<html>
 <head>
 <style>
 a {
-  color: white;
+  color: #00ff00;
   background-color: black;
   text-decoration: none;
   font-family: "Courier New", monospace;
+  animation: matrix 3s infinite;
+}
+
+@keyframes matrix {
+  0% { opacity: 0.6; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0.8; }
 }
 </style>
 <script>
-var links = ["https://file.kiwi/784d8c41#xCRZDu1PmCQWoLHBwcDNwA"];
+var links = ["../site/code.html","https://file.kiwi/784d8c41#xCRZDu1PmCQWoLHBwcDNwA"];
 var index = 0;
 function printLink() {
   var link = document.createElement("a");
@@ -28,6 +35,6 @@ function printLink() {
 var timer = setInterval(printLink, 100);
 </script>
 </head>
-<body>
+<body style="background-color: black;">
 </body>
 </html>
