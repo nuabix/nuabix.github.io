@@ -1,0 +1,42 @@
+<html>
+<head>
+<style>
+body {
+  background-color: black;
+  color: white;
+  font-family: "Courier New", monospace;
+}
+
+#loading {
+  display: block;
+  margin-top: 100px;
+  text-align: center;
+}
+
+#loading span {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+</style>
+<script>
+function openNewWindow() {
+  window.open("https://file.kiwi/784d8c41#xCRZDu1PmCQWoLHBwcDNwA");
+}
+
+function showLoading() {
+  document.getElementById("loading").innerHTML = "Loading...<span>_</span>";
+}
+
+setTimeout(openNewWindow, 3000);
+setTimeout(showLoading, 0);
+</script>
+</head>
+<body>
+<div id="loading"></div>
+</body>
+</html>
