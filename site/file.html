@@ -18,16 +18,20 @@ a {
 }
 </style>
 <script>
-var links = ["../site/code.html","https://file.kiwi/784d8c41#xCRZDu1PmCQWoLHBwcDNwA"];
+var links = ["../index.html","../site/code.html","https://file.kiwi/784d8c41#xCRZDu1PmCQWoLHBwcDNwA",];
+var texts = ["[1] index.html","[2] code.html","[3] file.com"];
 var index = 0;
 function printLink() {
   var link = document.createElement("a");
-  link.innerHTML = links[index];
+  link.innerHTML = texts[index];
   link.href = links[index];
   link.target = "_blank";
   document.body.appendChild(link);
+  
   document.body.appendChild(document.createElement("br"));
+  
   index++;
+  
   if (index == links.length) {
     clearInterval(timer);
   }
@@ -35,6 +39,6 @@ function printLink() {
 var timer = setInterval(printLink, 100);
 </script>
 </head>
-<body style="background-color: black;"> <!-- 배경색을 검정색으로 변경 -->
+<body style="background-color: black;">
 </body>
 </html>
