@@ -32,18 +32,18 @@ window.onload = function() {
     if (!isFullscreen) {
       if (console.requestFullscreen) {
         console.requestFullscreen();
-      } else if (console.webkitRequestFullscreen) { /* Safari */
+      } else if (console.webkitRequestFullscreen) {
         console.webkitRequestFullscreen();
-      } else if (console.msRequestFullscreen) { /* IE11 */
+      } else if (console.msRequestFullscreen) {
         console.msRequestFullscreen();
       }
       isFullscreen = true;
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) { /* Safari */
+      } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) { /* IE11 */
+      } else if (document.msExitFullscreen) {
         document.msExitFullscreen();
       }
       isFullscreen = false;
@@ -53,7 +53,7 @@ window.onload = function() {
   var consoleMinimize = document.querySelector('.console-minimize');
   consoleMinimize.addEventListener('click', function() {
     if (!isMinimized) {
-      console.style.width = "300px";
+      console.style.width = "400px";
       console.style.height = "250px";
       isMinimized = true;
     } else {
