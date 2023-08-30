@@ -45,10 +45,4 @@ background: linear-gradient(transparent, transparent);
 max-width: 100%;
 }
 
-@media (max-width: 768px) {
-h1 {font-size: 2em;}
-textarea {max-width: 300px;}
-#encrypt, #decrypt {
-margin-right: 5px;
-}
-}
+@media (max-width: 480px) { textarea { font-size: 1.5em; } #encrypt, #decrypt { font-size: 1.2em; } }
