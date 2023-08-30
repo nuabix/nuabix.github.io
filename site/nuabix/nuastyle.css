@@ -42,3 +42,15 @@ border-radius: 5px;
 ::-webkit-scrollbar-track {
 background: linear-gradient(transparent, transparent);
 }
+
+@media screen and (max-width: 600px) {
+  textarea {
+    max-width: 300px;
+    font-size: 1em;
+  }
+
+  #encrypt, #decrypt {
+    margin-right: 5px;
+    font-size: 0.8em;
+  }
+}
