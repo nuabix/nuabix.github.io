@@ -1,44 +1,44 @@
-      body {
-        background-color: #000000;
-        font-family: monospace;
-      }
-      
-      h1 {
-        color: #ff0000;
-        font-size: 3em;
-      }
+body {
+background-color: #000000;
+font-family: monospace;
+}
 
-      textarea {
-        max-width: 500px;
-        width: 100%;
-        resize: none;
-        font-size: 1.2em;
-      }
+h1 {
+color: #ff0000;
+font-size: 3em;
+}
 
-      #plain, #cipher {
-        border-color: #ff0000;
-        background-color:#000000;
-        color: #ff0000;
-      }
+textarea {
+max-width: 500px;
+width: 100%;
+resize: none;
+font-size: 1.2em;
+}
 
-      #encrypt, #decrypt {
-        display: inline-block;
-        margin-right: 10px;
-        border-color: #ff0000;
-        background-color:#000000;
-        color: #ff0000;
-      }
-      
-      ::-webkit-scrollbar {
-        width: 7px;
-        border-radius: 7px;
-      }
+#plain, #cipher {
+border-color: #ff0000;
+background-color:#000000;
+color: #ff0000;
+}
 
-      ::-webkit-scrollbar-thumb {
-        background: #ff0000;
-        border-radius: 5px;
-      }
+#encrypt, #decrypt {
+display: inline-block;
+margin-right: 10px;
+border-color: #ff0000;
+background-color:#000000;
+color: #ff0000;
+}
+  
+::-webkit-scrollbar {
+width: 7px;
+border-radius: 7px;
+}
 
-      ::-webkit-scrollbar-track {
-        background: linear-gradient(transparent, transparent);
-      }
+::-webkit-scrollbar-thumb {
+background: #ff0000;
+border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+background: linear-gradient(transparent, transparent);
+}
