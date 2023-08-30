@@ -43,14 +43,9 @@ border-radius: 5px;
 background: linear-gradient(transparent, transparent);
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 500px) {
   textarea {
-    max-width: 250px;
-    font-size: 1em;
-  }
-
-  #encrypt, #decrypt {
-    margin-right: 5px;
+    height: 150px;
     font-size: 0.8em;
-  }
+    }
 }
