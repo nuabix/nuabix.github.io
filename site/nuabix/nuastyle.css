@@ -1,68 +1,67 @@
 body {
-background-color: #000000;
-font-family: monospace;
+  background-color: #000000;
+  font-family: monospace;
 }
 
 h1 {
-color: #ff0000;
-font-size: 3em;
+  color: #ff0000;
+  /* 글자 크기를 상대적인 단위로 변경 */
+  font-size: 3rem;
 }
 
 textarea {
-max-width: 500px;
-width: 100%;
-resize: none;
-font-size: 1.2em;
+  /* 너비를 백분율로 변경 */
+  max-width: 100%;
+  width: 100%;
+  resize: none;
+  font-size: 1.2em;
 }
 
 #plain, #cipher {
-border-color: #ff0000;
-background-color:#000000;
-color: #ff0000;
+  border-color: #ff0000;
+  background-color:#000000;
+  color: #ff0000;
 }
 
 #encrypt, #decrypt {
-display: inline-block;
-margin-right: 10px;
-border-color: #ff0000;
-background-color:#000000;
-color: #ff0000;
+  display: inline-block;
+  margin-right: 10px;
+  border-color: #ff0000;
+  background-color:#000000;
+  color: #ff0000;
 }
   
 ::-webkit-scrollbar {
-width: 7px;
-border-radius: 7px;
+  width: 7px;
+  border-radius: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-background: #ff0000;
-border-radius: 5px;
+  background: #ff0000;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
-background: linear-gradient(transparent, transparent);
+  background: linear-gradient(transparent, transparent);
 }
 
-@media only screen and (max-width: 700px) {
-  textarea {
-    max-width: 100%;
-    width: 100%;
-    font-size: 1em;
+/* 미디어 쿼리 추가 */
+@media only screen and (max-width: 600px) {
+  h1 {
+    /* 글자 크기를 줄임 */
+    font-size: 2rem;
+    /* 여백을 줄임 */
+    margin-bottom: 10px;
   }
-}
 
-@media only screen and (min-width: 701px) and (max-width: 1024px) {
   textarea {
-    max-width: 80%;
-    width: 80%;
-    font-size: 1.2em;
+    /* 여백을 줄임 */
+    margin-bottom: 10px;
   }
-}
 
-@media only screen and (min-width: 1025px) {
-  textarea {
-    max-width: 500px;
-    width: 100%;
-    font-size: 1.2em;
+  #encrypt, #decrypt {
+    /* 여백을 줄임 */
+    margin-right: 5px;
+    margin-bottom: 10px;
   }
 }
