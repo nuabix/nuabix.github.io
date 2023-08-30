@@ -1,129 +1,54 @@
 body {
-  background-color: black;
+background-color: #000000;
+font-family: monospace;
 }
 
-#console {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 640px;
-  height: 480px;
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-  font-family: Courier New;
-  font-size: 16px;
-  overflow: hidden;
-  z-index: 9999;
+h1 {
+color: #ff0000;
+font-size: 3em;
 }
 
-#console-header {
-  height: 30px;
-  background-color: gray;
-  display: flex;
-  justify-content: space-between;
-  cursor: move;
+textarea {
+max-width: 500px;
+width: 100%;
+resize: none;
+font-size: 1.2em;
 }
 
-.console-title {
-  padding: 5px;
-  font-weight: bold;
+#plain, #cipher {
+border-color: #ff0000;
+background-color:#000000;
+color: #ff0000;
 }
 
-.console-buttons {
-  display: flex;
+#encrypt, #decrypt {
+display: inline-block;
+margin-right: 10px;
+border-color: #ff0000;
+background-color:#000000;
+color: #ff0000;
 }
-
-.console-button {
-  width: 10px;
-  height: 10px;
-  margin: 10px;
-  border-radius: 50%;
-  border: 2px solid white;
-  cursor: pointer;
-}
-
-.console-minimize {
-  background-color: yellow;
-}
-
-.console-maximize {
-  background-color: green;
-}
-
-.console-close {
-  background-color: red;
-}
-
-.console-body {
-  height: calc(100% - 50px);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.console-text {
-  flex-grow: 1;
-  overflow: auto;
-  padding-right: 10px;
-}
-
-.console-input {
-  display: flex;
-  align-items: center;
-  padding-top: 10px;
-}
-
-.console-prompt {
-  margin-right: 5px;
-}
-
-.console-input-field {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-family: inherit;
-  font-size: inherit;
-  width: 100%;
-  outline: none;
-}
-
-@media only screen and (max-width: 700px) {
-  #console {
-    width: 100%;
-    height: 50%;
-    border: none;
-    top: 0;
-    left: 0;
-    transform: none;
-  }
-}
-
-@media only screen and (min-width: 701px) and (max-width: 1024px) {
-  #console {
-    width: 90%;
-    height: 70%;
-  }
-}
-
-@media only screen and (min-width: 1025px) {
-  #console {
-    width: 640px;
-    height: 480px;
-  }
-}
-
+  
 ::-webkit-scrollbar {
-  width: 7px;
-  border-radius: 7px;
+width: 7px;
+border-radius: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: gray;
-  border-radius: 5px;
+background: #ff0000;
+border-radius: 5px;
+max-width: 100%;
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(transparent, transparent);
+background: linear-gradient(transparent, transparent);
+max-width: 100%;
+}
+
+@media (max-width: 768px) {
+h1 {font-size: 2em;}
+textarea {max-width: 300px;}
+#encrypt, #decrypt {
+margin-right: 5px;
+}
 }
