@@ -8,9 +8,13 @@ color: #ff0000;
 font-size: 3em;
 }
 
+form {
+width: 80%;
+}
+
 textarea {
 max-width: 500px;
-width: 100%;
+width: 90%;
 resize: none;
 font-size: 1.2em;
 }
@@ -19,18 +23,21 @@ font-size: 1.2em;
 border-color: #ff0000;
 background-color:#000000;
 color: #ff0000;
+font-family: serif;
 }
 
 #encrypt, #decrypt {
 display: inline-block;
-margin-right: 10px;
+width: 40%;
 border-color: #ff0000;
 background-color:#000000;
 color: #ff0000;
+font-family: serif;
 }
   
 ::-webkit-scrollbar {
-width: 7px;
+width: 5%;
+height: 5%;
 border-radius: 7px;
 }
 
@@ -45,4 +52,38 @@ background: linear-gradient(transparent, transparent);
 max-width: 100%;
 }
 
-@media (max-width: 480px) { textarea { font-size: 1.5em; } #encrypt, #decrypt { font-size: 1.2em; } }
+@media (max-width: 480px) {
+h1 {
+font-size: 2em;
+}
+textarea {
+font-size: 1.5em;
+}
+#encrypt, #decrypt {
+font-size: 1.2em;
+}
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+h1 {
+font-size: 2.5em;
+}
+textarea {
+font-size: 1.3em;
+}
+#encrypt, #decrypt {
+font-size: 1.1em;
+}
+}
+
+@media (min-width: 769px) {
+h1 {
+font-size: 3em;
+}
+textarea {
+font-size: 1.2em;
+}
+#encrypt, #decrypt {
+font-size: 1em;
+}
+}
