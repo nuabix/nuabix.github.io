@@ -5,7 +5,7 @@ const char = bot.char;
 const CharInfo = bot.CharInfo;
 const FirstMsg = bot.FirstMsg;
 
-const user = "Juho";
+const user = "User";
 
 const MAX_TOKENS_LIMIT = 6000;
 
