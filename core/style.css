@@ -1,0 +1,203 @@
+/* Define CSS Variables */
+:root {
+    --primary-font: 'Roboto', sans-serif;
+    --text-color: #333;
+    --light-grey: #ccc;
+    --medium-grey: #aaa;
+    --very-light-grey: #f0f0f0;
+    --modal-bg-color: rgba(0, 0, 0, 0.4);
+    --soft-white: #fff;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); }
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeInBorder {
+    from { border-color: transparent; }
+    to { border-color: var(--light-grey); }
+}
+
+/* General Styles */
+body {
+    font-family: var(--primary-font);
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(255,182,193,0.5), rgba(173,216,230,0.5), rgba(221,160,221,0.5), var(--soft-white));
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Chat Container */
+.chat-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    animation: fadeInBorder 2s ease 0.5s forwards;
+}
+
+/* Chat Log */
+.chat-log {
+    height: 500px;
+    padding: 20px;
+    overflow-y: auto;
+    animation: fadeIn 0.5s ease;
+    scrollbar-width: thin;
+    scrollbar-color: var(--medium-grey) var(--very-light-grey);
+}
+
+.chat-log::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 7px;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    background-color: var(--medium-grey);
+    border-radius: 5px;
+}
+
+.chat-log::-webkit-scrollbar-track {
+    background-color: var(--very-light-grey);
+}
+
+/* Message Styles */
+.message {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.4;
+    animation: slideIn 0.3s ease;
+}
+
+.ai-message {
+    background: linear-gradient(200deg, rgba(255, 202, 210, 0.2), rgba(204, 242, 255, 0.2), rgba(255, 200, 255, 0.2));
+}
+
+.user-message {
+    background-color: var(--very-light-grey);
+}
+
+/* User Input Styles */
+.user-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid var(--light-grey);
+    animation: slideIn 0.3s ease;
+}
+
+input, button {
+    font-family: var(--primary-font);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--light-grey);
+    background-color: var(--very-light-grey);
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: var(--medium-grey);
+    outline: none;
+}
+
+button {
+    padding: 10px 16px;
+    margin-left: 8px;
+    background-color: var(--very-light-grey);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-bg-color);
+}
+
+.modal-content {
+    background-color: var(--soft-white);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10% auto;
+    padding: 20px;
+    width: 30%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.modal-content.active {
+    transform: scale(1.05);
+}
+
+.close {
+    color: var(--medium-grey);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#apiKeyInput, #submitApiKey {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--light-grey);
+}
+
+#submitApiKey {
+    background-color: var(--very-light-grey);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+}
+
+#submitApiKey:hover {
+    background-color: #e7e7e7;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+    }
+}
