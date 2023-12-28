@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Nuabix</title> 
-    <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/132663353" alt="Site Icon">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI CHAT</title>
     <link rel="stylesheet" href="core/style.css">
-    <script src="core/script_head.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <div id="console">
-      <div id="console-header">
-        <div class="console-title">Nuabix - CLI</div>
-        <div class="console-buttons">
-          <div class="console-button console-minimize"></div>
-          <div class="console-button console-maximize"></div>
-          <div class="console-button console-close"></div>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-log" id="chatLog">
         </div>
-      </div>
-      <div class="console-body">
-        <div class="console-text"></div>
-        <div class="console-input">
-          <span class="console-prompt">C:\></span>
-          <input type="text" class="console-input-field" />
+        <div class="user-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendButton">Send</button>
         </div>
-      </div>
     </div>
-    <script src="core/script_core.js"></script>
-  </body>
+    <script src="core/bot/tiger.js"></script>
+    <script src="core/script.js"></script>
+    <script type ="text/javascript" src="core/API.js"></script>
+    <script src="core/run.js"></script>
+    <script src="core/tts.js"></script>
+    <div id="apiKeyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Please enter your API key:</p>
+            <input type="text" id="apiKeyInput">
+            <button id="submitApiKey">Submit</button>
+        </div>
+    </div>    
+</body>
 </html>
