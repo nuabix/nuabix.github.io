@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let apikey = window.location.hash.substring(1);
+    let apikey = window.location.hash.substring(1).replace(/\/$/, '');
     const modal = document.getElementById("apiKeyModal");
     const closeBtn = document.getElementsByClassName("close")[0];
     const submitBtn = document.getElementById("submitApiKey");
@@ -13,10 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     submitBtn.onclick = function() {
-        apikey = document.getElementById("apiKeyInput").value;
+        apikey = document.getElementById("apiKeyInput").value.replace(/\/$/, '');
         if (apikey) {
             window.history.pushState(null, null, '#' + apikey);
             modal.style.display = "none";
+            location.reload();
         } else {
             alert("API key is required.");
         }
@@ -30,5 +31,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const config = {
-    apikey: window.location.hash.substring(1)
+    apikey: window.location.hash.substring(1).replace(/\/$/, '')
 };
