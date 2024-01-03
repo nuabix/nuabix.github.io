@@ -6,20 +6,21 @@
     <title>AI CHAT</title>
     <link rel="stylesheet" href="core/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="chat-container" id="chatContainer">
         <div class="chat-log" id="chatLog">
-        </div>
+        </div>  
         <div class="user-input">
             <input type="text" id="userInput" placeholder="Type your message...">
             <button id="sendButton">Send</button>
         </div>
     </div>
-    <script src="core/bot/tiger.js"></script>
+    <script type ="text/javascript" src="core/api.js"></script>
+    <script src="core/inst/pingpong.js"></script>
+    <script src="core/bot/visper.js"></script>
+
     <script src="core/script.js"></script>
-    <script type ="text/javascript" src="core/API.js"></script>
     <script src="core/run.js"></script>
     <script src="core/tts.js"></script>
     <div id="apiKeyModal" class="modal">
