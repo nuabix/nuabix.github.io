@@ -3,33 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI CHAT</title>
+    <title>Nuabix</title>
     <link rel="stylesheet" href="core/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Web Design Setting -->
     <div class="chat-container" id="chatContainer">
-        <div class="chat-log" id="chatLog">
-        </div>  
+        <div class="chat-log" id="chatLog"></div>  
         <div class="user-input">
             <input type="text" id="userInput" placeholder="Type your message...">
             <button id="sendButton">Send</button>
         </div>
     </div>
-    <script type ="text/javascript" src="core/api.js"></script>
-    <script src="core/inst/pingpong.js"></script>
-    <script src="core/bot/visper.js"></script>
-
-    <script src="core/script.js"></script>
-    <script src="core/run.js"></script>
-    <script src="core/tts.js"></script>
+    <button id="darkModeToggle" title="Dark Mode">☀️</button>
+    <button id="memoryDeleteButton" title="Delete Memory">🗑️</button>
     <div id="apiKeyModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            <h2>Welcome to Nuabix!</h2>
             <p>Please enter your API key:</p>
             <input type="text" id="apiKeyInput">
             <button id="submitApiKey">Submit</button>
+            <hr>
+            <h3>How to Obtain an API Key</h3>
+            <p>To obtain an API key, follow these steps:</p>
+            <ol>
+                <li>Visit the <a href="https://colab.research.google.com/drive/14innqcssjdLKhcqO_g6A2T9T3WTdt71z" target="_blank">Google Colab notebook</a>.</li>
+                <li>Run the notebook to generate your API key.</li>
+                <li>Copy the generated key and paste it here.</li>
+            </ol>
         </div>
-    </div>    
+    </div>
+    
+    <!-- Chat settings Imports -->
+    <script src="core/@chatset/inst/inst.js"></script>
+    <script src="core/@chatset/bot/nuabix.js"></script>
+    <script src="core/@chatset/user/user.js"></script>
+    
+    <!-- ETC JavaScript Imports -->
+    <script src="core/@etc_script/api.js"></script>
+    <script src="core/@etc_script/tts.js"></script>
+    <script src="core/@etc_script/darkmode.js"></script>
+    
+    <!-- Core JavaScript Imports -->
+    <script src="core/run.js"></script>
+    <script src="core/script.js"></script>
 </body>
 </html>
